@@ -26,6 +26,8 @@ version '1.0-SNAPSHOT'
 repositories {
     mavenCentral()
     jcenter()
+
+    //테스트
 }
 
 dependencies {
