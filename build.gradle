@@ -28,7 +28,7 @@ repositories {
     jcenter()
 
 
-    //xptmtm
+    //테스트
 }
 
 dependencies {
