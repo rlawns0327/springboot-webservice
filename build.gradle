@@ -27,7 +27,8 @@ repositories {
     mavenCentral()
     jcenter()
 
-    //테스트
+
+    //xptmtm
 }
 
 dependencies {
