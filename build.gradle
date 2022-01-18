@@ -50,8 +50,13 @@ dependencies { // 프로젝트 개발에 필요한 의존성(라이브러리)을
     // 예시 testImplementation('org.springframework.boot:spring-boot-starter-test:2.6.1')
     // 특정 버전을 명시하지 않아야 위에서 선언한 버전을 따라감
 
-    implementation('org.projectlombok:lombok')
-    annotationProcessor('org.projectlombok:lombok:1.18.8')
+    implementation('org.projectlombok:lombok')      // 롬북
+    annotationProcessor('org.projectlombok:lombok:1.18.8')  //롬북
+
+
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('com.h2database:h2')
+
 
 
     // 이를 통해 라이브러리 버전 관리가 한 곳에 집중되고 버전 충돌 문제도 해결되어 빠르고 편하게 개발가능
