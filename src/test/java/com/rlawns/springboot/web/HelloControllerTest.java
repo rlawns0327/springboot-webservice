@@ -16,7 +16,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 
 @RunWith(SpringRunner.class)
-@WebMvcTest
+@WebMvcTest(controllers={HelloController.class})    //버전 바뀜으로 경로 지정
 public class HelloControllerTest {
 
     @Autowired
