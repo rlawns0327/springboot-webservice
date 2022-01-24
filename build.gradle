@@ -1,0 +1,65 @@
+buildscript { //플러그인 의존성 관리를 위한 설정 ( 프로그램 확장 기능 )
+    ext { //전역 변수를 설정
+        springBootVersion = '2.1.7.RELEASE'
+    }
+    repositories { //각종 플러그인들을 어떤 원격 저장소에서 받을지를 정합니다.
+
+        mavenCentral() // 기본적으로 많이 사용 ,
+        // 기존에는 개발에 필요한 라이브러리를 프로그래머가 직접 다운받아 프로젝트에 추가했었다.
+        // 이제는 pom.xml에 기술함으로서 쉽게 라이브러리를 사용할 수 있게 되었다.
+
+        jcenter() // 라이브러리 업로드 난이도가 높기 때문에 최근들어 많이 사용,
+        // 본인이 만든 라이브러리를 업로드하기 위해서 많은 과정과 설정이 필요해 공유가 힘듬
+        // 그 문제를 개선하기 위해 업로드를 간단하게 만들고 업로드를 하면 자동적으로 mavenCentral에도 업로드 됨
+        // jcenter 저장소는 intellij에 작성하면 경고가 뜨는데 2월 1일부로 서비스를 종료한다고 한다.
+        //JCenter에서 악성코드가 포함된 라이브러리 패키지가 등록된 사고가 있었다고 합니다. 이러한 사고방지 대책을 세우지 못하고 서비스를 닫는 것처럼 보입니다
+
+    }
+    dependencies { // 플러그인 의존성을 선언하는 곳
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        //Gradle을 빌드 도구로 사용할 때 스프링 부트 종속성을 관리하고, 애플리케이션을 패키징 및 실행하는데 도움을 주는 프로그램
+        // 스프링 부트 그레이들 플러그인의 2.1.7 RELEASE를 의존성으로 받겠다.
+    }
+}
+
+
+// 앞서 선언한 플러그인 의존성들을 적용할 것인지 결정하는 코드
+//4개의 플러그인은 자바와 스프링 부트를 사용하기 위한 필수 플러그인
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management' // 스프링부트의 의존성들을 관리해 주는 플러그인이라 꼭 추가
+
+
+
+group 'com.rlawns'
+version '1.0-SNAPSHOT'
+
+repositories { // 각종 의존성(라이브러리)들을 어떤 원격 저상소에서 받을지를 정합니다.
+    mavenCentral()
+    jcenter()
+}
+dependencies { // 프로젝트 개발에 필요한 의존성(라이브러리)을 선언하는 곳
+
+    implementation('org.springframework.boot:spring-boot-starter-web')
+    // implementation 테스트 소스 세트를 포함한 모든 소스에 적용
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') // 기본 제공
+    // testImplementation 테스트 소스 세트에만 적용
+
+    // 예시 testImplementation('org.springframework.boot:spring-boot-starter-test:2.6.1')
+    // 특정 버전을 명시하지 않아야 위에서 선언한 버전을 따라감
+
+    implementation('org.projectlombok:lombok')      // 롬북
+    annotationProcessor('org.projectlombok:lombok:1.18.8')  //롬북
+
+
+    implementation('org.springframework.boot:spring-boot-starter-data-jpa')
+    implementation('com.h2database:h2')
+
+
+    implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+
+    // 이를 통해 라이브러리 버전 관리가 한 곳에 집중되고 버전 충돌 문제도 해결되어 빠르고 편하게 개발가능
+}
