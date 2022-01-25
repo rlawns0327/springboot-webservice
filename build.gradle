@@ -57,8 +57,13 @@ dependencies { // 프로젝트 개발에 필요한 의존성(라이브러리)을
     implementation('org.springframework.boot:spring-boot-starter-data-jpa')
     implementation('com.h2database:h2')
 
+    implementation('org.springframework.boot:spring-boot-starter-oauth2-client')
 
     implementation('org.springframework.boot:spring-boot-starter-mustache')
+
+    implementation('org.springframework.session:spring-session-jdbc')
+
+    testImplementation("org.springframework.security:spring-security-test")
 
 
     // 이를 통해 라이브러리 버전 관리가 한 곳에 집중되고 버전 충돌 문제도 해결되어 빠르고 편하게 개발가능
